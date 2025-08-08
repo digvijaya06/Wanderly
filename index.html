@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wanderly - Explore the world</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <header>
+      <h1>Wanderly</h1>
+      <p class="tagline">Explore the World with Us</p>
+      <nav>
+        <div class="nav-toggle">☰ Menu</div>
+
+        <ul class="nav-menu">
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Destinations</a></li>
+          <li><a href="#">Testimonials</a></li>
+          <li><a href="#">Booking</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <section class="hero" id="hero">
+      <div class="hero-content">
+        <h2>Your next Adventure Awaits</h2>
+        <p>
+          Uncover hidden gems, meet new cultures, and create unforgettable
+          memories.
+        </p>
+        <a href="#" class="cta-button">Start Your Journey</a>
+      </div>
+    </section>
+
+    <main>
+      <section class="cards" id="destinations">
+        <h2>Popular Destinations</h2>
+        <div class="card">
+          <img
+            src="https://images.pexels.com/photos/1446624/pexels-photo-1446624.jpeg?_gl=1*ucunwt*_ga*OTc2Mzk0MTY4LjE3NTQ2NTY2NDU.*_ga_8JE65Q40S6*czE3NTQ2NTY2NDUkbzEkZzEkdDE3NTQ2NTY4MTEkajQ4JGwwJGgw"
+            alt="Effiel Tower"
+          />
+          <h3>Paris</h3>
+          <p>
+            Stroll along the Seine, visit the Eiffel Tower, and fall in love
+            with the City of Light.
+          </p>
+        </div>
+
+        <div class="card">
+          <img
+            src="https://images.pexels.com/photos/161251/senso-ji-temple-japan-kyoto-landmark-161251.jpeg?_gl=1*1bntl4v*_ga*OTc2Mzk0MTY4LjE3NTQ2NTY2NDU.*_ga_8JE65Q40S6*czE3NTQ2NTY2NDUkbzEkZzEkdDE3NTQ2NTY2ODEkajI0JGwwJGgw"
+            alt="Tokyo"
+          />
+          <h3>Tokyo</h3>
+          <p>
+            Experience futuristic cityscapes, ancient temples, and the pulse of
+            Japan
+          </p>
+        </div>
+        <div class="card">
+          <img
+            src="https://images.pexels.com/photos/290386/pexels-photo-290386.jpeg?_gl=1*4178ym*_ga*OTc2Mzk0MTY4LjE3NTQ2NTY2NDU.*_ga_8JE65Q40S6*czE3NTQ2NTY2NDUkbzEkZzEkdDE3NTQ2NTY3NDYkajUzJGwwJGgw"
+            alt="New York"
+          />
+          <h3>New York</h3>
+          <p>
+            Discover the skyline, Broadway shows, and endless culture in the Big
+            Apple
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <section id="counters">
+      <div class="counter">
+        <h3 id="destinationsCount">0</h3>
+        <p>Destinations</p>
+      </div>
+      <div class="counter">
+        <h3 id="travelersCount">0</h3>
+        <p>Happy Travelers</p>
+      </div>
+      <div class="counter">
+        <h3 id="supportCount">0</h3>
+        <p>24/7 Support</p>
+      </div>
+    </section>
+
+    <section class="testimonials" id="testimonials">
+      <h2>What Travelers Say</h2>
+      <div class="testimonial-carousel">
+        <div class="testimonial active">
+          <p>"Wanderly gave me the trip of a lifetime!"</p>
+          <h4>--Dimple From Indore</h4>
+        </div>
+        <div class="testimonial">
+          <p>
+            "Everything was so easy and the destinations were breathtaking!"
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="booking" id="booking">
+      <h2>Plan Your Trip</h2>
+      <form>
+        <input type="text" placeholder="Destination" required />
+        <input type="date" required />
+        <input type="number" placeholder="Travelers" required />
+        <button type="submit">Search Trips</button>
+      </form>
+    </section>
+
+    <footer>
+      <p>© 2025 Wanderly Travel Co. | Discover More, Wander Farther</p>
+      <div class="socials">
+        <a href="#"
+          ><img
+            src="https://cdn-icons-png.flaticon.com/128/5968/5968764.png"
+            alt="Facebook"
+        /></a>
+        <a href="#"
+          ><img
+            src="https://cdn-icons-png.flaticon.com/128/3955/3955024.png"
+            alt="Instagram"
+        /></a>
+        <a href="#"
+          ><img
+            src="https://cdn-icons-png.flaticon.com/128/174/174883.png"
+            alt="Youtube"
+        /></a>
+      </div>
+    </footer>
+
+    <script>
+      document.querySelector(".nav-toggle").addEventListener("click", () => {
+        document.querySelector(".nav-menu").classList.toggle("active");
+      });
+
+      function animateCounter(id, end, duration) {
+        const el = document.getElementById(id);
+        let start = 0;
+        const increment = end / (duration / 50); // update every 50ms
+
+        const counter = setInterval(() => {
+          start += increment;
+          if (start >= end) {
+            el.innerText = end;
+            clearInterval(counter);
+          } else {
+            el.innerText = Math.floor(start);
+          }
+        }, 50);
+      }
+      animateCounter("destinationsCount", 100, 2000);
+      animateCounter("travelersCount", 10000, 2000);
+      animateCounter("supportCount", 24, 2000);
+      const testimonials = document.querySelectorAll(".testimonial");
+      let index = 0;
+
+      setInterval(() => {
+        testimonials.forEach((t) => t.classList.remove("active"));
+        testimonials[index].classList.add("active");
+        index = (index + 1) % testimonials.length;
+      }, 4000);
+    </script>
+  </body>
+</html>
